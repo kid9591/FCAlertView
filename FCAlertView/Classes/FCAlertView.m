@@ -355,10 +355,14 @@
                                     alertViewFrame.size.height - 20);
     }
     
-    UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(25.0f,
-                                                                          descriptionLevel + (alertViewWithVector * 30),
-                                                                          alertViewFrame.size.width - 50.0f,
-                                                                          60.0f)];
+    UITextView *descriptionLabel = [[UITextView alloc] initWithFrame:CGRectMake(25.0f,
+                                                                                descriptionLevel + (alertViewWithVector * 30),
+                                                                                alertViewFrame.size.width - 50.0f,
+                                                                                60.0f)];
+    //    UILabel *descriptionLabel = [[UILabel alloc] initWithFrame:CGRectMake(25.0f,
+    //                                                                          descriptionLevel + (alertViewWithVector * 30),
+    //                                                                          alertViewFrame.size.width - 50.0f,
+    //                                                                          60.0f)];
     if (_subtitleFont != nil)
         descriptionLabel.font = self.subtitleFont;
     else if (_title != nil)
@@ -372,10 +376,12 @@
     else
         descriptionLabel.text = self.subTitle;
     descriptionLabel.textAlignment = NSTextAlignmentCenter;
-    descriptionLabel.adjustsFontSizeToFitWidth = NO;
-    
-    descriptionLabel.numberOfLines = 0;
-    descriptionLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+    //    descriptionLabel.adjustsFontSizeToFitWidth = NO;
+    //
+    //    descriptionLabel.numberOfLines = 0;
+    //    descriptionLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+    descriptionLabel.textContainerInset = UIEdgeInsetsZero;
+    descriptionLabel.textContainer.lineFragmentPadding = 0;
     
     // HEADER VIEW - With Title & Subtitle
     
@@ -419,6 +425,10 @@
                                                              options:NSStringDrawingUsesLineFragmentOrigin
                                                           attributes:@{NSFontAttributeName:descriptionLabel.font}
                                                              context:context].size;
+    
+    if (boundingBox.height > 300) {
+        boundingBox.height = 300;
+    }
     
     CGFloat heightDiff = descriptionLabel.frame.size.height - boundingBox.height;
     

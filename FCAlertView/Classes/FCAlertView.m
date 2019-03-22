@@ -958,7 +958,7 @@
         alertViewVector.image = vectorImage;
     } else {
         alertViewVector = [[UIImageView alloc] init];
-        alertViewVector.image = [vectorImage imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        alertViewVector.image = [vectorImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     }
     
     if (_fullCircleCustomImage)
